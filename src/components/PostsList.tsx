@@ -1,6 +1,19 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 
-export const PostsList: React.FC = () => (
+import { Post } from '../types';
+import { PostItem } from './index';
+
+type Props = {
+  posts: Post[];
+  selectedPost: Post | null;
+  onSelectPost: Dispatch<SetStateAction<Post | null>>;
+};
+
+export const PostsList: React.FC<Props> = ({
+  posts,
+  selectedPost,
+  onSelectPost,
+}) => (
   <div data-cy="PostsList">
     <p className="title">Posts:</p>
 
@@ -15,7 +28,15 @@ export const PostsList: React.FC = () => (
       </thead>
 
       <tbody>
-        <tr data-cy="Post">
+        {posts.map(post => (
+          <PostItem
+            post={post}
+            key={post.id}
+            selectedPost={selectedPost}
+            onSelectPost={onSelectPost}
+          />
+        ))}
+        {/* <tr data-cy="Post">
           <td data-cy="PostId">17</td>
 
           <td data-cy="PostTitle">
@@ -79,7 +100,7 @@ export const PostsList: React.FC = () => (
               Open
             </button>
           </td>
-        </tr>
+        </tr> */}
       </tbody>
     </table>
   </div>
