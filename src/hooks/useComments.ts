@@ -9,6 +9,7 @@ export const useComments = (selectedPostId: number) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const loadComments = () => {
+    setErrorMessage('');
     setIsLoading(true);
 
     commentsService

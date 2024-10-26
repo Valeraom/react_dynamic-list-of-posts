@@ -13,6 +13,8 @@ export const usePosts = (selectedUserId: number = 0) => {
       return;
     }
 
+    setErrorMessage('');
+
     postsService
       .getUserPosts(selectedUserId)
       .then(setPosts)

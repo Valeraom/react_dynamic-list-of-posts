@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import cn from 'classnames';

@@ -8,6 +8,8 @@ export const useUsers = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const loadUsers = () => {
+    setErrorMessage('');
+
     usersService
       .getUsers()
       .then(res => {
