@@ -26,7 +26,7 @@ export const useUsers = () => {
 
         setUsers(preparedUsers);
       })
-      .catch(() => setErrorMessage('Something went wrong'));
+      .catch(() => setErrorMessage('Unable to load users'));
   };
 
   useEffect(loadUsers, []);

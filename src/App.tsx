@@ -20,20 +20,14 @@ export const App = () => {
     selectedPost,
     setSelectedPost,
     isLoading,
-    setIsLoading,
     errorMessage: postsErrorMessage,
   } = usePosts(selectedUser?.id);
 
   const errorMessage = usersErrorMessage || postsErrorMessage;
 
   const handleSelectUserId = (user: User) => {
-    setIsLoading(true);
-    setSelectedPost(null);
     setSelectedUser(user);
-
-    if (selectedUser === user) {
-      setIsLoading(false);
-    }
+    setSelectedPost(null);
   };
 
   return (
@@ -69,7 +63,7 @@ export const App = () => {
                 {selectedUser &&
                   !isLoading &&
                   !errorMessage &&
-                  posts.length === 0 && (
+                  posts?.length === 0 && (
                     <div
                       className="notification is-warning"
                       data-cy="NoPostsYet"
@@ -81,7 +75,7 @@ export const App = () => {
                 {selectedUser &&
                   !isLoading &&
                   !errorMessage &&
-                  posts.length !== 0 && (
+                  posts?.length !== 0 && (
                     <PostsList
                       posts={posts}
                       selectedPost={selectedPost}

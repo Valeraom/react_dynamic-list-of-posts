@@ -15,7 +15,7 @@ export const useComments = (selectedPostId: number) => {
     commentsService
       .getComments(selectedPostId)
       .then(setComments)
-      .catch(() => setErrorMessage('Something went wrong'))
+      .catch(() => setErrorMessage('Unable to load comments'))
       .finally(() => setIsLoading(false));
   };
 
@@ -33,10 +33,8 @@ export const useComments = (selectedPostId: number) => {
       .then(comment => {
         setComments(current => [...current, comment]);
       })
-      .catch(error => {
-        setErrorMessage('Something went wrong');
-
-        throw error;
+      .catch(() => {
+        setErrorMessage('Unable to add a comment');
       });
   };
 
